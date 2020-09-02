@@ -1,0 +1,7 @@
+.container-task {
+  /* border: solid 1px black; */
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: yellow;
+  border-radius: 5px;
+}
