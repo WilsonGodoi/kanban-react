@@ -5,3 +5,10 @@
   background-color: yellow;
   border-radius: 5px;
 }
+
+.draggable {
+  cursor: move;
+}
+.draggable.dragging {
+  opacity: 0.5;
+}

@@ -8,7 +8,7 @@ const Column = ({ column, onDrop }) => (
     <div
       className="column-body"
       id={column.type}
-      onDragOver={(e) => onDragOver(e)}
+      onDragOver={onDragOver}
       onDrop={(e) => onDrop(e)}
     >
       {column.tasks.map((task) => (

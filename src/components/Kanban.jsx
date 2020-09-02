@@ -30,6 +30,7 @@ function Kanban() {
 
   function onDrop(ev) {
     ev.preventDefault();
+
     var taskId = ev.dataTransfer.getData("taskId");
     var originColumnType = ev.dataTransfer.getData("taskOriginColumn");
     const targetColumnType =
@@ -45,9 +46,37 @@ function Kanban() {
 
     cols.find((col) => col.type === originColumnType).tasks.splice(index, 1);
 
-    cols.find((col) => col.type === targetColumnType).tasks.push(task);
+    const afterElement = getDragAfterElement(ev.target, ev.clientY);
+    if (afterElement) {
+      const ts = cols.find((col) => col.type === afterElement.parentElement.id)
+        .tasks;
+
+      const element = ts.find((t) => t.id === afterElement.id);
+      const ind = ts.findIndex((obj) => obj.id === element.id);
+      ts.splice(ind, 0, task);
+    } else {
+      cols.find((col) => col.type === targetColumnType).tasks.push(task);
+    }
 
     setColumns(cols);
+  }
+
+  function getDragAfterElement(container, y) {
+    const draggableElements = [
+      ...container.querySelectorAll(".draggable:not(.dragging)"),
+    ];
+    return draggableElements.reduce(
+      (closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset, element: child };
+        } else {
+          return closest;
+        }
+      },
+      { offset: Number.NEGATIVE_INFINITY }
+    ).element;
   }
 }
 
