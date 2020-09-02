@@ -21,7 +21,7 @@ const state = [
 function Kanban() {
   const [columns, setColumns] = useState(state);
   return (
-    <div>
+    <div className="container-kanban">
       {columns.map((column) => (
         <Column column={column} onDrop={onDrop} key={column.type} />
       ))}

@@ -11,11 +11,9 @@ const Column = ({ column, onDrop }) => (
       onDragOver={(e) => onDragOver(e)}
       onDrop={(e) => onDrop(e)}
     >
-      {column.tasks.length ? (
-        column.tasks.map((task) => <Task task={task} key={task.id} />)
-      ) : (
-        <div>Insira uma tarefa</div>
-      )}
+      {column.tasks.map((task) => (
+        <Task task={task} key={task.id} />
+      ))}
     </div>
   </div>
 );

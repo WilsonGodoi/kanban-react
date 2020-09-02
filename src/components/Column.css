@@ -1,11 +1,11 @@
 .container {
-  width: 320px;
+  min-width: 160px;
   border: solid 1px black;
-  padding: 1em;
-  margin: 0.5em;
-  display: inline-block;
+  min-height: 90%;
+  margin: 0.5em 0.5em;
 }
 .column-body {
-  min-height: 200px;
   background-color: aqua;
+  height: 100%;
+  padding-top: 0.1em;
 }
