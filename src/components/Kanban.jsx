@@ -64,6 +64,7 @@ function Kanban() {
   function getDragAfterElement(container, y) {
     const draggableElements = [
       ...container.querySelectorAll(".draggable:not(.dragging)"),
+      ...container.parentElement.querySelectorAll(".draggable:not(.dragging)"),
     ];
     return draggableElements.reduce(
       (closest, child) => {
