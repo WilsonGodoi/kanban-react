@@ -1,25 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Column from "./Column";
 
-const state = [
-  {
-    type: "TODO",
-    tasks: [
-      { id: "1", title: "Wilson" },
-      { id: "2", title: "Daniela" },
-    ],
-  },
-  {
-    type: "DOING",
-    tasks: [
-      { id: "3", title: "Pedro" },
-      { id: "4", title: "Leonel" },
-    ],
-  },
-];
-
-function Kanban() {
-  const [columns, setColumns] = useState(state);
+function Kanban({ columns, setColumns }) {
   return (
     <div className="container-kanban">
       {columns.map((column) => (
