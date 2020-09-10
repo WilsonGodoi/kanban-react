@@ -41,6 +41,8 @@ function Kanban({ columns, setColumns }) {
 
     var taskId = ev.dataTransfer.getData("taskId");
     var originColumnType = ev.dataTransfer.getData("taskOriginColumn");
+    if (!taskId || !originColumnType) return;
+
     const targetColumnType =
       (ev.target.parentElement && ev.target.parentElement.id) || ev.target.id;
 
