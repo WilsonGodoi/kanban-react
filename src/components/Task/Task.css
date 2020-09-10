@@ -12,3 +12,6 @@
 .draggable.dragging {
   opacity: 0.5;
 }
+.button-right {
+  float: right;
+}

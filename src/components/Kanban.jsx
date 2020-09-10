@@ -4,24 +4,30 @@ import Column from "./Column/Column";
 
 function Kanban({ columns, setColumns }) {
   return (
-    <div className="container-kanban">
-      {columns.map((column) => (
-        <Column
-          column={column}
-          onDrop={onDrop}
-          key={column.type}
-          createTask={createTask}
-          deleteColumn={deleteColumn}
-        />
-      ))}
-    </div>
+    <>
+      {columns.length ? (
+        <div className="container-kanban">
+          {columns.map((column) => (
+            <Column
+              column={column}
+              onDrop={onDrop}
+              key={column.type}
+              createTask={createTask}
+              deleteColumn={deleteColumn}
+            />
+          ))}
+        </div>
+      ) : (
+        <div>Crie uma coluna para iniciar!</div>
+      )}
+    </>
   );
 
   function deleteColumn(columnType) {
     const cols = Object.assign([], columns);
     const col = cols.find((col) => col.type === columnType);
     if (col.tasks.length) {
-      throw new Error("Não é possível deletar uma coluna com tarefas");
+      return alert("Não é possível deletar uma coluna com tarefas");
     }
     const index = cols.indexOf(col);
     cols.splice(index, 1);

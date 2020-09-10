@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
       <Header columns={columns} setColumns={atualizaBD} />
-      <Kanban columns={columns} setColumns={atualizaBD} />;
+      <Kanban columns={columns} setColumns={atualizaBD} />
     </>
   );
 
