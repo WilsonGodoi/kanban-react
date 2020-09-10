@@ -4,7 +4,11 @@ function Header({ columns, setColumns }) {
   const [newColumnName, setNewColumnName] = useState("");
   return (
     <div>
-      <input type="text" onChange={(e) => setNewColumnName(e.target.value.toUpperCase())} />
+      <input
+        type="text"
+        value={newColumnName}
+        onChange={(e) => setNewColumnName(e.target.value.toUpperCase())}
+      />
       <button onClick={() => createColumn(newColumnName)}>Create Column</button>
     </div>
   );
@@ -18,6 +22,7 @@ function Header({ columns, setColumns }) {
     }
     const column = { type: columnName, tasks: [] };
     setColumns([...columns, column]);
+    setNewColumnName("");
   }
 }
 export default Header;

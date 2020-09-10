@@ -1,14 +1,28 @@
 import React from "react";
-import Column from "./Column";
+import { v4 as uuidv4 } from "uuid";
+import Column from "./Column/Column";
 
 function Kanban({ columns, setColumns }) {
   return (
     <div className="container-kanban">
       {columns.map((column) => (
-        <Column column={column} onDrop={onDrop} key={column.type} />
+        <Column
+          column={column}
+          onDrop={onDrop}
+          key={column.type}
+          createTask={createTask}
+        />
       ))}
     </div>
   );
+
+  function createTask(columnType, taskTitle) {
+    if (taskTitle.trim() === "") return;
+    const cols = Object.assign([], columns);
+    const col = cols.find((col) => col.type === columnType);
+    col.tasks.unshift({ id: uuidv4(), title: taskTitle });
+    setColumns(cols);
+  }
 
   function onDrop(ev) {
     ev.preventDefault();
