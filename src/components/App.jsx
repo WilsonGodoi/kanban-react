@@ -1,3 +1,4 @@
+import "@fortawesome/fontawesome-free/js/all.js";
 import React, { useState } from "react";
 import "./App.css";
 import Header from "./Header/Header";
