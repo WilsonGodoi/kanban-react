@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import Task from "../Task/Task";
 import "./Column.css";
 
-const Column = ({ column, onDrop, createTask }) => {
+const Column = ({ column, onDrop, createTask, deleteColumn }) => {
   const [taskTitle, setTaskTitle] = useState("");
   return (
     <div className="container">
       <h4>{column.type}</h4>
+      <button onClick={() => deleteColumn(column.type)}>Delete Column</button>
       <input
         type="text"
         value={taskTitle}

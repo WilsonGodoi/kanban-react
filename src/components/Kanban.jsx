@@ -11,10 +11,22 @@ function Kanban({ columns, setColumns }) {
           onDrop={onDrop}
           key={column.type}
           createTask={createTask}
+          deleteColumn={deleteColumn}
         />
       ))}
     </div>
   );
+
+  function deleteColumn(columnType) {
+    const cols = Object.assign([], columns);
+    const col = cols.find((col) => col.type === columnType);
+    if (col.tasks.length) {
+      throw new Error("Não é possível deletar uma coluna com tarefas");
+    }
+    const index = cols.indexOf(col);
+    cols.splice(index, 1);
+    setColumns(cols);
+  }
 
   function createTask(columnType, taskTitle) {
     if (taskTitle.trim() === "") return;
