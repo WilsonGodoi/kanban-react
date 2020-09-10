@@ -14,6 +14,7 @@ const Column = ({ column, onDrop, createTask, deleteColumn }) => {
         onChange={(e) => setTaskTitle(e.target.value.toUpperCase())}
       />
       <button
+        className="btn btn-primary"
         onClick={() => {
           createTask(column.type, taskTitle);
           setTaskTitle("");
