@@ -1,6 +1,7 @@
 .container {
   min-width: 240px;
   border: solid 1px black;
+  border-radius: 5px;
   min-height: 90%;
   margin: 0.5em;
   padding: 0;
