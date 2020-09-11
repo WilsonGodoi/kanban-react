@@ -9,12 +9,14 @@ const Column = ({ column, onDrop, createTask, deleteColumn }) => {
   const [taskTitle, setTaskTitle] = useState("");
   return (
     <div className="container">
-      <Dropdown icon="fas fa-ellipsis-v">
-        <DropdownItem title="Create Task" onClick={onCreateTask} />
-        <DropdownItem title="Create Task" />
-        <DropdownItem title="Create Task" />
-      </Dropdown>
-      <h4>{column.type}</h4>
+      <div className="container-head">
+        <Dropdown icon="fas fa-ellipsis-v three-dots">
+          <DropdownItem title="Create Task" onClick={onCreateTask} />
+          <DropdownItem title="Create Task" />
+          <DropdownItem title="Create Task" />
+        </Dropdown>
+        <h4>{column.type}</h4>
+      </div>
       <button onClick={() => deleteColumn(column.type)}>Delete Column</button>
       <input
         type="text"
