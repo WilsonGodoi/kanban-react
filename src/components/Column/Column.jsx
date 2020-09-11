@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AlertService from "../AlertService";
 import Dropdown from "../Dropdown";
 import DropdownItem from "../DropdownItem";
 import Task from "../Task/Task";
@@ -9,13 +10,7 @@ const Column = ({ column, onDrop, createTask, deleteColumn }) => {
   return (
     <div className="container">
       <Dropdown icon="fas fa-ellipsis-v">
-        <DropdownItem
-          title="Create Task"
-          onClick={() => {
-            createTask(column.type, taskTitle);
-            setTaskTitle("");
-          }}
-        />
+        <DropdownItem title="Create Task" onClick={onCreateTask} />
         <DropdownItem title="Create Task" />
         <DropdownItem title="Create Task" />
       </Dropdown>
@@ -38,10 +33,19 @@ const Column = ({ column, onDrop, createTask, deleteColumn }) => {
       </div>
     </div>
   );
-};
 
-function onDragOver(e) {
-  e.preventDefault();
-}
+  function onCreateTask() {
+    AlertService.confirm("Deseja criar uma tarefa?", null, accepCreateTask);
+  }
+
+  function accepCreateTask() {
+    createTask(column.type, taskTitle);
+    setTaskTitle("");
+  }
+
+  function onDragOver(e) {
+    e.preventDefault();
+  }
+};
 
 export default Column;
