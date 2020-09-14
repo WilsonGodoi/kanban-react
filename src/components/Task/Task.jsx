@@ -9,7 +9,8 @@ const Task = ({ task }) => (
     id={task.id}
     className="container-task draggable"
   >
-    {task.title}
+    {task.title.length > 20 ? task.title.substring(0, 16) + "..." : task.title}
+    <i className="fas fa-ellipsis-v three-dots" type="button"></i>
   </div>
 );
 

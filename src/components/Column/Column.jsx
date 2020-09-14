@@ -21,7 +21,11 @@ const Column = ({ column, onDrop, createTask, deleteColumn }) => {
           createTask={createTask}
           columnType={column.type}
         />
-        <h4>{column.type}</h4>
+        <h4>
+          {column.type.length > 12
+            ? column.type.substring(0, 10) + "..."
+            : column.type}
+        </h4>
       </div>
       <div
         className="column-body"

@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 
-const TaskModal = ({ id, createTask, columnType }) => {
-  const [taskTitle, setTaskTitle] = useState("");
+const TaskModal = ({ id, createTask, columnType, task }) => {
+  const [taskTitle, setTaskTitle] = useState((task && task.title) || "");
+  const [taskDescription, setTaskDescription] = useState(
+    (task && task.description) || ""
+  );
   return (
     <div
-      class="modal fade"
+      className="modal fade"
       id={id}
-      tabindex="-1"
+      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModalLabel">
               Create Task
             </h5>
             <button
               type="button"
-              class="close"
+              className="close"
               data-dismiss="modal"
               aria-label="Close"
               onClick={clearForm}
@@ -26,22 +29,26 @@ const TaskModal = ({ id, createTask, columnType }) => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <label for="title">Title</label>
+          <div className="modal-body">
+            <label>Title</label>
             <input
               type="text"
-              id="title"
               className="form-control"
               value={taskTitle}
               onChange={(e) => setTaskTitle(e.target.value.toUpperCase())}
             />
-            <label for="description">Description</label>
-            <textarea id="description" className="form-control" rows="6" />
+            <label>Description</label>
+            <textarea
+              className="form-control"
+              rows="6"
+              value={taskDescription}
+              onChange={(e) => setTaskDescription(e.target.value.toUpperCase())}
+            />
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              className="btn btn-secondary"
               onClick={clearForm}
               data-dismiss="modal"
             >
@@ -49,7 +56,7 @@ const TaskModal = ({ id, createTask, columnType }) => {
             </button>
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={accepCreateTask}
               data-dismiss="modal"
             >
@@ -62,11 +69,12 @@ const TaskModal = ({ id, createTask, columnType }) => {
   );
 
   function clearForm() {
-    setTaskTitle("");
+    // setTaskTitle("");
+    // setTaskDescription("");
   }
 
   function accepCreateTask() {
-    createTask(columnType, taskTitle);
+    createTask(columnType, taskTitle, taskDescription);
     setTaskTitle("");
   }
 };

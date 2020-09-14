@@ -1,7 +1,6 @@
 import "@fortawesome/fontawesome-free/js/all.js";
 import React, { useState } from "react";
 import "./App.css";
-import Header from "./Header/Header";
 import Kanban from "./Kanban";
 
 // const state = [
@@ -27,7 +26,7 @@ const App = () => {
   );
   return (
     <>
-      <Header columns={columns} setColumns={atualizaBD} />
+      {/* <Header columns={columns} setColumns={atualizaBD} /> */}
       <Kanban columns={columns} setColumns={atualizaBD} />
     </>
   );

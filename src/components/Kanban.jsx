@@ -34,11 +34,15 @@ function Kanban({ columns, setColumns }) {
     setColumns(cols);
   }
 
-  function createTask(columnType, taskTitle) {
+  function createTask(columnType, taskTitle, taskDescription) {
     if (taskTitle.trim() === "") return;
     const cols = Object.assign([], columns);
     const col = cols.find((col) => col.type === columnType);
-    col.tasks.unshift({ id: uuidv4(), title: taskTitle });
+    col.tasks.unshift({
+      id: uuidv4(),
+      title: taskTitle,
+      description: taskDescription,
+    });
     setColumns(cols);
   }
 
